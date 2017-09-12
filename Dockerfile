@@ -31,6 +31,28 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
+
+# install Ubuntu Make - see https://wiki.ubuntu.com/ubuntu-make
+
+RUN add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
+
+RUN apt-get update
+RUN apt-get upgrade
+
+RUN apt install -y ubuntu-make
+
+# install MySQL Workbench
+RUN apt-get install -y mysql-workbench
+
+# install PgAdmin
+RUN apt-get install -y pgadmin3
+
+RUN chown -R vagrant:vagrant /vagrant
+
+#install IDEA ultimate edition
+RUN su -c 'umake ide idea-ultimate /home/vagrant/.local/share/umake/ide/idea' vagrant
+	
+
 # tini for subreap                                   
 ENV TINI_VERSION v0.9.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /bin/tini
