@@ -33,7 +33,7 @@ RUN apt-get update \
 
 
 # install Ubuntu Make - see https://wiki.ubuntu.com/ubuntu-make
-
+RUN echo "Installing UMake"
 RUN add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make
 
 RUN apt-get update
@@ -41,13 +41,9 @@ RUN apt-get upgrade
 
 RUN apt install -y ubuntu-make
 
-# install MySQL Workbench
-RUN apt-get install -y mysql-workbench
-
-# install PgAdmin
-RUN apt-get install -y pgadmin3
-
 RUN chown -R vagrant:vagrant /vagrant
+
+RUN echo "Installing IntelliJ"
 
 #install IDEA ultimate edition
 RUN su -c 'umake ide idea-ultimate /home/vagrant/.local/share/umake/ide/idea' vagrant
